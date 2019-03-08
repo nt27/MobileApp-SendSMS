@@ -60,7 +60,8 @@
 //cordova-plugin-sms 
 //This plugin has default option to enable the SMS permission from "App Permission" option
 var app = {
-    sendSms: function (number, message) {
+    sendGroup: function (number, message) {
+        //alert(number);
         //var number = document.getElementById('numberTxt').value.toString(); // iOS: ensure number is actually a string 
         //var message = document.getElementById('messageTxt').value;        
         if (SMS) SMS.sendSMS(number, message, function () { }, function () { });
@@ -75,11 +76,11 @@ var SendSMSMessage = {
         var smsTextDetails = smsDetail.split("\n");
         for (var i = 0, details; details = smsTextDetails[i]; i++) {
             var detailRow = details.split(',');
-            var number = detailRow[1];  
-            var message = detailRow[2];
-            alert(number);
-            alert(message);            
-            app.sendSms.call(number,message);
+            var SendNumber = detailRow[1];  
+            var SendMessage = detailRow[2];
+           // alert(SendNumber);
+           // alert(SendMessage);            
+            app.sendGroup(SendNumber, SendMessage);
         }
     }
 }
