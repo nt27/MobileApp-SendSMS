@@ -104,4 +104,6 @@
     <splash src="res/screens/windows/SplashScreenPhone.scale-240.png" width="1152" height="1920" />
   </platform>
   <preference name="ShowTitle" value="True" />
+  <plugin name="cordova-plugin-file" spec="~4.3.3" />
+  <plugin name="cordova-plugin-sms" spec="~1.0.5" />
 </widget>

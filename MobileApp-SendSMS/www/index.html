@@ -1,29 +1,51 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
+<head>
     <!--
         Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
         For details, see http://go.microsoft.com/fwlink/?LinkID=617521
-    -->
+
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
-        
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>MobileAppSendSMS</title>
-    </head>
+         -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
+    <title>MobileAppSendSMS</title>
+</head>
     <body>
-        <div class="app">
-            <h1>Mobile App</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
+        <section data-role="page">
+            <header data-role="header">
+                <h4 class="ui-title">Send SMS</h4>
+            </header>
+            <article role="main" class="ui-content">
+                <!--<input id="numberTxt" placeholder="Enter mobile number" value="" type="tel" />
+                <textarea id="messageTxt" placeholder="Enter message"></textarea>
+                <input type="button" class="ui-btn ui-btn-inline" onclick="SendSMSMessage.allNumbers()" value="Send SMS" />-->
+                <form>
+                    <!--<label for="DataFile">Data File: </label>
+    <input type="file" data-clear-btn="true" name="DataFile" id="DataFile" value="">
+    <textarea id="textArea" placeholder="Enter message"></textarea>
+    <input type="button" class="ui-btn ui-btn-inline" onclick="app.fileUpload()" value="Read File" />-->
+
+                    <label for="files">Select Data File: </label>
+
+                    <input type="file" data-clear-btn="true" id="files" name="files" />
+                    <input type="button" class="ui-btn ui-btn-inline" onclick="readFile.readFileData()" value="Read File" />
+                    <input type="button" class="ui-btn ui-btn-inline" onclick="SendSMSMessage.allNumbers()" value="Send SMS" />
+                    <textarea id="fileOutput2" placeholder="" class="ui-textinput-autogrow"></textarea>
+
+                </form>
+            </article>
+            <footer data-role="footer" data-position="fixed">
+                <h6>Copyright 2019</h6>
+            </footer>
+        </section>
+        <script type="text/javascript" src="scripts/sendSMS.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="scripts/platformOverrides.js"></script>
-        <script type="text/javascript" src="scripts/index.js"></script>
+        <script type="text/javascript" src="scripts/jquery-1.8.0.min.js"></script>
+        <script type="text/javascript" src="scripts/jquery.mobile-1.4.5.min.js"></script>
     </body>
 </html>
