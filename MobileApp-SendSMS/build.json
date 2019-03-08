@@ -1,11 +1,13 @@
 {
-     "android": {
-         "release": {
-             "keystore": "",
-             "storePassword": "",
-             "alias": "",
-             "password" : "",
-             "keystoreType": ""
-         }
-     }
- }
+  "android": {
+    "release": {
+      "keystore": "C:\\Users\\cgiadmin\\source\\repos\\MobileApp-SendSMS\\MobileApp-SendSMS\\res\\jd-release-key.keystore",
+      "storePassword": "Modern123$",
+      "alias": "android-key",
+      "password": "Modern123$",
+      "keystoreType": ""
+    }
+  }
+}
+
+
