@@ -12,40 +12,43 @@
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
-    <title>MobileAppSendSMS</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+
+    <title>Send SMS</title>
 </head>
-    <body>
-        <section data-role="page">
-            <header data-role="header">
-                <h4 class="ui-title">Send SMS</h4>
-            </header>
-            <article role="main" class="ui-content">
-                <!--<input id="numberTxt" placeholder="Enter mobile number" value="" type="tel" />
-                <textarea id="messageTxt" placeholder="Enter message"></textarea>
-                <input type="button" class="ui-btn ui-btn-inline" onclick="SendSMSMessage.allNumbers()" value="Send SMS" />-->
-                <form>
-                    <!--<label for="DataFile">Data File: </label>
-    <input type="file" data-clear-btn="true" name="DataFile" id="DataFile" value="">
-    <textarea id="textArea" placeholder="Enter message"></textarea>
-    <input type="button" class="ui-btn ui-btn-inline" onclick="app.fileUpload()" value="Read File" />-->
+<body>
+    <section data-role="page">
+        <header data-role="header">
+            <h4 class="ui-title">Send SMS</h4>
+        </header>
+        <article role="main" class="ui-content">
+            <!--<input id="numberTxt" placeholder="Enter mobile number" value="" type="tel" />
+            <textarea id="messageTxt" placeholder="Enter message"></textarea>
+            <input type="button" class="ui-btn ui-btn-inline" onclick="SendSMSMessage.allNumbers()" value="Send SMS" />-->
+            <form>
+                <!--<label for="DataFile">Data File: </label>
+                <input type="file" data-clear-btn="true" name="DataFile" id="DataFile" value="">
+                <textarea id="textArea" placeholder="Enter message"></textarea>
+                <input type="button" class="ui-btn ui-btn-inline" onclick="app.fileUpload()" value="Read File" />-->
+                <img src="images/sms.png" height="40" width="40"/>
+                <label class="ui-title" for="files">Select Data File: </label>
 
-                    <label for="files">Select Data File: </label>
+                <input type="file" data-clear-btn="true" id="files" name="files" />
+                <input type="button" class="ui-btn-inline ui-btn-corner-all" onclick="readSMSFile.readFileData()" value="Read File" />
+                <textarea id="fileOutput" placeholder="" class="ui-textinput-autogrow"></textarea>
+                <input type="button" class="ui-btn ui-btn-inline" onclick="SendSMSMessage.allNumbers()" value="Send SMS" />
 
-                    <input type="file" data-clear-btn="true" id="files" name="files" />
-                    <input type="button" class="ui-btn ui-btn-inline" onclick="readFile.readFileData()" value="Read File" />
-                    <input type="button" class="ui-btn ui-btn-inline" onclick="SendSMSMessage.allNumbers()" value="Send SMS" />
-                    <textarea id="fileOutput2" placeholder="" class="ui-textinput-autogrow"></textarea>
-
-                </form>
-            </article>
-            <footer data-role="footer" data-position="fixed">
-                <h6>Copyright 2019</h6>
-            </footer>
-        </section>
-        <script type="text/javascript" src="scripts/sendSMS.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="scripts/platformOverrides.js"></script>
-        <script type="text/javascript" src="scripts/jquery-1.8.0.min.js"></script>
-        <script type="text/javascript" src="scripts/jquery.mobile-1.4.5.min.js"></script>
-    </body>
+            </form>
+        </article>
+        <footer data-role="footer" data-position="fixed">
+            <h6>Copyright 2019</h6>
+        </footer>
+    </section>
+    <script type="text/javascript" src="scripts/sendSMS.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.mobile-1.4.5.min.js"></script>
+</body>
 </html>

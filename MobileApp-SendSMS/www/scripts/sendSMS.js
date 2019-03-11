@@ -1,35 +1,54 @@
-﻿function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
+﻿//On load event adding
 
-    var f = files[0];
-    // Loop through the FileList and render image files as thumbnails.
-    //for (var i = 0, f; f = files[i]; i++) {
+/*window.onload = function () {
+    document.getElementById('btnReadFile').addEventListener('click', readSMSFile.readFileData());
+    document.getElementById('btnSendSMS').addEventListener('click', SendSMSMessage.allNumbers())
+}*/
 
-    // Only process image files.
-    /*if (!f.type.match('image.*')) {
-        continue;
-    }*/
-
-    var reader = new FileReader();
-    //alert(f);
-    // Closure to capture the file information.
-    reader.onload = (function (theFile) {
-        return function (e) {
-            document.querySelector("#fileOutput").innerHTML = e.target.result;
-            /*
-            // Render thumbnail.
-            var span = document.createElement('span');
-            span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                '" title="', escape(theFile.name), '"/>'].join('');
-            document.getElementById('list').insertBefore(span, null);*/
-        };
-    })(f);
-    // Read in the image file as a data URL.
-    reader.readAsText(f);
-
-    //}
+var readSMSFile = {
+    readFileData: function () {        
+        //Getting the first element in the file object
+        var f = document.getElementById('files').files[0];
+        var reader = new FileReader();
+        reader.onloadend = (function (theFile) {
+            return function (e) {
+                document.getElementById('fileOutput').value = this.result;
+            };
+        })(f);
+        reader.readAsText(f);
+        //alert('Loaded...');
+    }
 }
-//document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
+var SendSMSMessage = {
+    allNumbers: function () {
+        var smsDetail = document.getElementById('fileOutput').value;
+        var smsTextDetails = smsDetail.split("\n");
+        for (var i = 0, details; details = smsTextDetails[i]; i++) {
+            var detailRow = details.split(',');
+            var SendNumber = detailRow[1];
+            var SendMessage = detailRow[2];
+            // alert(SendNumber);
+            // alert(SendMessage);            
+            app.sendGroup(SendNumber, SendMessage);
+        }
+    }
+}
+
+//Method B - To send SMS
+//cordova-plugin-sms 
+//This plugin has default option to enable the SMS permission from "App Permission" option
+var app = {
+    sendGroup: function (number, message) {
+        //alert(number);
+        //var number = document.getElementById('numberTxt').value.toString(); // iOS: ensure number is actually a string 
+        //var message = document.getElementById('messageTxt').value;        
+        if (SMS) SMS.sendSMS(number, message, function () { }, function () { });
+        alert("SMS sent successfully!");
+    }
+}
+
+
 
 //cordova-sms-plugin
 /*var app = {
@@ -56,50 +75,5 @@
 */
 
 
-//Method B - To send SMS
-//cordova-plugin-sms 
-//This plugin has default option to enable the SMS permission from "App Permission" option
-var app = {
-    sendGroup: function (number, message) {
-        //alert(number);
-        //var number = document.getElementById('numberTxt').value.toString(); // iOS: ensure number is actually a string 
-        //var message = document.getElementById('messageTxt').value;        
-        if (SMS) SMS.sendSMS(number, message, function () { }, function () { });
-        alert("SMS sent successfully!");
-    }
-}
-
-var SendSMSMessage = {
-    allNumbers: function () {
-
-        var smsDetail = document.getElementById('fileOutput2').value;
-        var smsTextDetails = smsDetail.split("\n");
-        for (var i = 0, details; details = smsTextDetails[i]; i++) {
-            var detailRow = details.split(',');
-            var SendNumber = detailRow[1];  
-            var SendMessage = detailRow[2];
-           // alert(SendNumber);
-           // alert(SendMessage);            
-            app.sendGroup(SendNumber, SendMessage);
-        }
-    }
-}
-
-var readFile = {
-    readFileData: function () {
-        //Getting the first element in the file object
-        var f = document.getElementById('files').files[0];
-
-        var reader = new FileReader();        
-        reader.onloadend= (function (theFile) {
-            return function (e) {                
-                document.getElementById('fileOutput2').value = this.result;                
-            };
-        })(f);        
-        reader.readAsText(f);
-        //alert('Loaded...');
-    }
-
-}
 
 
